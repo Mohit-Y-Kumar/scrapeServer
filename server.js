@@ -30,6 +30,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api", eventRoutes);
+console.log("🔗 Event routes registered at /api/events");
+
 
 
 

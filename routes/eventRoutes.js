@@ -7,14 +7,23 @@ const Subscription = require("../models/subscription");
 // Route to get scraped events
 router.get("/events", async (req, res) => {
   try {
-       console.log("Scrape start");
+    console.log("Scrape start");
     const events = await scrapeEvents();
-    console.log("Fetched events: ",events);
+
+    if (!events || events.length === 0) {
+      console.log("No events fetched");
+    } else {
+      console.log("Fetched events count: ", events.length);
+      console.log("Sample event: ", events[0]);
+    }
+
     res.json(events);
   } catch (error) {
+    console.error("Error fetching events:", error);
     res.status(500).json({ message: "Failed to fetch events" });
   }
 });
+
 
 router.post("/subscribe", async (req, res) => {
   const { email, eventLink } = req.body;

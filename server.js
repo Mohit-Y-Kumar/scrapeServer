@@ -25,7 +25,10 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "https://scrapevent.netlify.app",
+  credentials: true, // only if you plan to use cookies or sessions later
+}));
 app.use(express.json());
 
 // Routes

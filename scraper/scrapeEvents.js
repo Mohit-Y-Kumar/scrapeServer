@@ -1,10 +1,13 @@
 const puppeteer = require("puppeteer");
+console.log("📁 scrapeEvents.js module loaded"); 
 
 const scrapeEvents = async () => {
+   console.log("🚀 scrapeEvents() function CALLED");
   const browser = await puppeteer.launch({
     headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
+  console.log("🧭 Puppeteer browser launched");
 
   const page = await browser.newPage();
   await page.goto("https://www.eventbrite.com.au/d/australia--sydney/events/", {

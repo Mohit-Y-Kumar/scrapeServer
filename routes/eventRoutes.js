@@ -6,6 +6,7 @@ const Subscription = require("../models/subscription");
 
 // Route to get scraped events
 router.get("/events", async (req, res) => {
+  console.log("📥 GET /api/events called");
   try {
     console.log("Scrape start");
     const events = await scrapeEvents();
